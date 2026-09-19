@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiConnect - Find Top Lawyers & VIP Legal Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Cinzel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF7F2',
+                            100: '#F5EFDF',
+                            200: '#EBE2CD',
+                            300: '#D6C8A5',
+                        },
+                        navy: {
+                            800: '#0B132B',
+                            900: '#070B19',
+                        },
+                        gold: {
+                            400: '#D4A373',
+                            500: '#B8860B',
+                            600: '#8B6508',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="CSS.css">
+</head>
+<body class="bg-cream-50 dark:bg-navy-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col antialiased">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-navy-800/90 backdrop-blur-md border-b border-cream-200 dark:border-slate-800 shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-slate-900 font-bold shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-scale-balanced text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-serif font-extrabold tracking-tight text-slate-900 dark:text-white">Juris<span class="gold-gradient-text">Elite</span></span>
+                        <span class="block text-[10px] tracking-widest text-slate-500 dark:text-slate-400 uppercase font-semibold">VIP Legal Network</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#practice-areas" class="text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition">Practice Areas</a>
+                    <a href="#directory" class="text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition">Find Lawyers</a>
+                    <a href="#concierge" class="text-gold-600 dark:text-gold-400 font-semibold flex items-center gap-1 hover:opacity-80 transition">
+                        <i class="fa-solid fa-crown text-xs"></i> VIP Concierge
+                    </a>
+                </nav>
+
+                <!-- Actions & Theme Toggle -->
+                <div class="flex items-center gap-3">
+                    <!-- Strict Light / Dark Theme Button -->
+                    <button id="themeToggleBtn" onclick="toggleTheme()" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-cream-100 dark:bg-slate-800 hover:bg-cream-200 dark:hover:bg-slate-700 border border-cream-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 transition">
+                        <span id="themeIconLight" class="hidden items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                            <i class="fa-solid fa-sun text-sm"></i> Light
+                        </span>
+                        <span id="themeIconDark" class="flex items-center gap-1.5 text-indigo-400">
+                            <i class="fa-solid fa-moon text-sm"></i> Dark
+                        </span>
+                    </button>
+
+                    <a href="#concierge" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl gold-gradient-bg text-slate-950 font-bold text-xs uppercase tracking-wider shadow-md hover:brightness-110 transition">
+                        <i class="fa-solid fa-phone"></i> VIP Consultation
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-gold-600">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-cream-200 dark:border-slate-800 bg-white dark:bg-navy-800 px-4 py-4 space-y-3 text-sm font-medium">
+            <a href="#practice-areas" onclick="toggleMobileMenu()" class="block text-slate-700 dark:text-slate-200 py-1">Practice Areas</a>
+            <a href="#directory" onclick="toggleMobileMenu()" class="block text-slate-700 dark:text-slate-200 py-1">Find Lawyers</a>
+            <a href="#concierge" onclick="toggleMobileMenu()" class="block text-gold-600 dark:text-gold-400 font-semibold py-1">VIP Concierge</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative py-16 md:py-24 bg-gradient-to-b from-cream-100/60 to-cream-50 dark:from-navy-800 dark:to-navy-900 border-b border-cream-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-gold-500/10 text-gold-600 dark:text-gold-400 border border-gold-500/20 mb-6">
+                <i class="fa-solid fa-shield-halved"></i> Verified Advocates & Legal Consultants
+            </span>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tight text-slate-900 dark:text-white max-w-4xl mx-auto leading-tight mb-6">
+                Connect with India's Most Reputed <span class="gold-gradient-text">Lawyers & Advocates</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 font-normal">
+                Transparent court win-rates, verified experience, clear fee structures in Indian Rupees (₹), and instant access to top senior advocates.
+            </p>
+
+            <!-- Quick Search Bar -->
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-xl border border-cream-200 dark:border-slate-700 max-w-4xl mx-auto flex flex-col md:flex-row gap-3">
+                <div class="flex-1 flex items-center px-4 bg-cream-50 dark:bg-slate-900 rounded-xl border border-cream-200/60 dark:border-slate-800">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 mr-3"></i>
+                    <input id="searchInput" type="text" placeholder="Search lawyer name or city (e.g. Mumbai, Delhi)..." class="w-full py-3 bg-transparent text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none">
+                </div>
+
+                <div class="flex-1 flex items-center px-4 bg-cream-50 dark:bg-slate-900 rounded-xl border border-cream-200/60 dark:border-slate-800">
+                    <i class="fa-solid fa-briefcase text-slate-400 mr-3"></i>
+                    <select id="practiceFilter" class="w-full py-3 bg-transparent text-sm text-slate-800 dark:text-slate-100 focus:outline-none">
+                        <option value="All" class="dark:bg-slate-900">All Practice Areas</option>
+                        <option value="Corporate Law" class="dark:bg-slate-900">Corporate & M&A</option>
+                        <option value="Property Law" class="dark:bg-slate-900">Property & Real Estate</option>
+                        <option value="Criminal Defense" class="dark:bg-slate-900">Criminal Defense</option>
+                        <option value="Intellectual Property" class="dark:bg-slate-900">Intellectual Property</option>
+                        <option value="Family Law" class="dark:bg-slate-900">Family & Civil</option>
+                    </select>
+                </div>
+
+                <button onclick="applyFilters()" class="px-8 py-3.5 rounded-xl gold-gradient-bg text-slate-950 font-bold text-sm shadow-md hover:brightness-110 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-filter"></i> Search Advocates
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRACTICE AREAS SECTION -->
+    <section id="practice-areas" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold-600 dark:text-gold-400">Specialized Domain Expertise</span>
+            <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mt-1">Practice Areas</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto mt-2">
+                Our lawyers specialize in various legal domains to provide you with expert advice and representation.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 1. Legal Notices -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Legal Notices</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Drafting and responding to formal legal notices, breach of contract claims, and recovery demands.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Legal Notices')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 2. Property Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Property Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Property dispute resolution, title verification, land acquisition, and partition suits.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Property Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 3. Civil Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Civil Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Civil suits, injunction orders, monetary disputes, and contract enforcement litigation.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Civil Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 4. Company Law Matters -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Company Law Matters</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">NCLT proceedings, M&A compliance, shareholder disputes, and corporate restructuring.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Company Law Matters')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 5. Criminal Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-handcuffs"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Criminal Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Bail applications, white-collar crime defense, trial court representation, and High Court appeals.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Criminal Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 6. Consumer Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Consumer Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Consumer court litigation, medical negligence, product liability, and service deficiency claims.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Consumer Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 7. Family Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Family Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Divorce proceedings, child custody battles, alimony settlements, and mutual consent divorce.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Family Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 8. Constitutional Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Constitutional Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Writ petitions (Habeas Corpus, Mandamus), fundamental rights protection, Supreme Court practice.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Constitutional Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 9. Legal Documentation -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Legal Documentation</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Wills, power of attorney, lease agreements, commercial vendor contracts, and affidavits.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Legal Documentation')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 10. Labour Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Labour Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Employment disputes, wrongful termination, industrial disputes, and PoSH compliance.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Labour Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- 11. Trademark Lawyer -->
+            <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-cream-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition group flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-copyright"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Trademark Lawyer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">IP filing, trademark objection replies, copyright infringement, and brand protection litigation.</p>
+                </div>
+                <button onclick="handlePracticeConsult('Trademark Lawyer')" class="w-full py-2.5 px-4 rounded-xl border border-gold-500/30 hover:bg-gold-500/10 text-gold-600 dark:text-gold-400 text-xs font-bold flex items-center justify-center gap-2 transition">
+                    Consult Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LAWYERS DIRECTORY SECTION -->
+    <section id="directory" class="py-16 bg-cream-100/40 dark:bg-navy-800/40 border-y border-cream-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-600 dark:text-gold-400">Verified Legal Directory</span>
+                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white">Top Rated Advocates</h2>
+                </div>
+
+                <!-- Sort Control -->
+                <div class="flex items-center gap-3">
+                    <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Sort By:</label>
+                    <select id="sortSelect" onchange="applyFilters()" class="bg-white dark:bg-slate-800 border border-cream-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs rounded-xl px-3 py-2 font-medium focus:outline-none shadow-sm">
+                        <option value="rating">Highest Rating</option>
+                        <option value="winRate">Highest Win Rate (%)</option>
+                        <option value="priceLow">Fee: Low to High</option>
+                        <option value="priceHigh">Fee: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Lawyer Cards Grid Container -->
+            <div id="lawyersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamically Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP CONCIERGE SECTION -->
+    <section id="concierge" class="py-20 bg-navy-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#B8860B_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-gold-500/20 text-gold-400 border border-gold-500/30 mb-6">
+                        <i class="fa-solid fa-crown text-amber-400"></i> Elite Concierge Touchpoint
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-black tracking-tight leading-tight mb-6">
+                        Are You a Senior Advocate or Facing a <span class="gold-gradient-text">High-Stakes Case?</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                        Our Senior VIP Concierge team directly connects reputed High Court & Supreme Court Advocates with corporate clients, HNWIs, and complex legal matters requiring discrete counsel.
+                    </p>
+
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p><strong class="text-white">Senior Partner Network:</strong> Direct onboarding and touchpoints for lawyers with 15+ years court standing.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p><strong class="text-white">Confidential Strategy Session:</strong> Priority callback within 60 minutes backed by mutual non-disclosure agreements.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p><strong class="text-white">Retainer Management:</strong> Escrowed retainer fee structures and high-profile dispute advisory.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intake Form -->
+                <div class="bg-navy-800/90 border border-gold-500/30 p-8 rounded-3xl shadow-2xl backdrop-blur-md">
+                    <h3 class="text-2xl font-serif font-bold text-white mb-2">Get In Touch Directly</h3>
+                    <p class="text-slate-400 text-xs mb-6">Whether you are seeking top-tier counsel or joining as a senior lawyer.</p>
+
+                    <form onsubmit="handleVipSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">Full Name / Advocate Name</label>
+                            <input type="text" required placeholder="Adv. Ramesh Kumar" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-500">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">Phone Number</label>
+                                <input type="tel" required placeholder="+91 98765 43210" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-500">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">I am a...</label>
+                                <select required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                                    <option value="client">Client Seeking Lawyer</option>
+                                    <option value="lawyer">Reputed Senior Lawyer</option>
+                                    <option value="corporate">Corporate Legal Dept</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1">Case / Inquiry Details</label>
+                            <textarea rows="3" required placeholder="Briefly state your dispute area or bar enrollment info..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl gold-gradient-bg text-slate-950 font-bold text-sm shadow-lg hover:brightness-110 transition">
+                            Request Immediate Touchpoint
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-navy-900 border-t border-cream-200 dark:border-slate-800 py-12 text-xs text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg gold-gradient-bg flex items-center justify-center text-slate-950 font-bold">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <span class="text-lg font-serif font-bold text-slate-900 dark:text-white">Juris<span class="gold-gradient-text">Elite</span></span>
+            </div>
+
+            <p class="text-center">&copy; 2026 JurisElite Legal Services Network India. All rights reserved.</p>
+
+            <div class="flex items-center space-x-6">
+                <a href="#" class="hover:text-gold-600 transition">Privacy Policy</a>
+                <a href="#" class="hover:text-gold-600 transition">Terms of Service</a>
+                <a href="#concierge" class="hover:text-gold-600 transition">Advocate Portal</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-cream-200 dark:border-slate-700 shadow-2xl max-w-md w-full p-6 relative">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <h3 id="modalLawyerName" class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-1">Book Consultation</h3>
+            <p id="modalLawyerSpecialty" class="text-xs text-gold-600 dark:text-gold-400 font-semibold mb-4"></p>
+
+            <form onsubmit="confirmBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Full Name</label>
+                    <input type="text" required placeholder="Enter name" class="w-full bg-cream-50 dark:bg-slate-900 border border-cream-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-gold-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Phone / WhatsApp</label>
+                    <input type="tel" required placeholder="+91 98765 43210" class="w-full bg-cream-50 dark:bg-slate-900 border border-cream-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-gold-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Preferred Slot</label>
+                    <input type="datetime-local" required class="w-full bg-cream-50 dark:bg-slate-900 border border-cream-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-gold-500">
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl gold-gradient-bg text-slate-950 font-bold text-sm shadow-md hover:brightness-110 transition mt-2">
+                    Confirm Consultation Slot
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- EMBEDDED n8n AI CHATBOT WIDGET -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- Chat Launcher Toggle Button -->
+        <button onclick="toggleChatWindow()" class="w-14 h-14 rounded-full gold-gradient-bg text-slate-950 shadow-2xl flex items-center justify-center text-xl hover:scale-105 active:scale-95 transition-all">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+
+        <!-- Chat Container Window -->
+        <div id="chatWindow" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-[380px] h-[520px] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-cream-200 dark:border-slate-700 flex flex-col overflow-hidden">
+            
+            <!-- Chat Header -->
+            <div class="p-4 bg-navy-900 text-white flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl gold-gradient-bg flex items-center justify-center text-slate-950 font-bold text-sm">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs">JurisBot Legal AI</h4>
+                        <p class="text-[10px] text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> n8n Connected
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Chat Message List -->
+            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs chat-scroll">
+                <div class="bg-cream-100 dark:bg-slate-800 p-3 rounded-2xl max-w-[85%] text-slate-800 dark:text-slate-200">
+                    Namaste! I am JurisBot AI. How can I assist you with legal consultation or finding the right advocate today?
+                </div>
+            </div>
+
+            <!-- Quick Suggestions -->
+            <div class="p-2 border-t border-cream-200 dark:border-slate-800 flex gap-2 overflow-x-auto text-[11px] bg-cream-50/50 dark:bg-slate-900/50">
+                <button onclick="sendQuickPrompt('Find Property Lawyer in Mumbai')" class="shrink-0 px-2.5 py-1 bg-white dark:bg-slate-800 border border-cream-200 dark:border-slate-700 rounded-full hover:border-gold-500 transition">
+                    🏢 Property Lawyer
+                </button>
+                <button onclick="sendQuickPrompt('Help with Legal Notice')" class="shrink-0 px-2.5 py-1 bg-white dark:bg-slate-800 border border-cream-200 dark:border-slate-700 rounded-full hover:border-gold-500 transition">
+                    📝 Legal Notice
+                </button>
+                <button onclick="sendQuickPrompt('Connect with VIP Concierge')" class="shrink-0 px-2.5 py-1 bg-white dark:bg-slate-800 border border-cream-200 dark:border-slate-700 rounded-full hover:border-gold-500 transition">
+                    👑 VIP Concierge
+                </button>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <form onsubmit="handleChatSubmit(event)" class="p-3 border-t border-cream-200 dark:border-slate-800 flex gap-2 bg-white dark:bg-slate-900">
+                <input id="chatInput" type="text" placeholder="Type your legal query..." class="flex-1 bg-cream-50 dark:bg-slate-800 border border-cream-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-gold-500">
+                <button type="submit" class="px-4 py-2 rounded-xl gold-gradient-bg text-slate-950 font-bold text-xs hover:brightness-110 transition">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>

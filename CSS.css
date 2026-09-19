@@ -1,0 +1,22 @@
+body {
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #B8860B 0%, #E6C875 30%, #996515 70%, #8B6508 100%);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #996515 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: #B8860B;
+            border-radius: 4px;
+        }
